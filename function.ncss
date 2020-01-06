@@ -1,0 +1,14 @@
+push 10
+builtin print
+jump bar
+
+foo:
+    push 10
+    push 20
+    add
+    builtin print
+    return
+
+bar:
+    call foo
+    call foo

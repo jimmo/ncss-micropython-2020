@@ -1,0 +1,4 @@
+builtin input
+push 10
+add
+builtin print

@@ -1,0 +1,62 @@
+builtin input
+save p
+
+# 2 is prime
+load p
+push 2
+sub
+jumpzero is_prime
+
+
+# Even is composite
+push 2
+save d
+load p
+push 2
+mod
+jumpzero is_composite
+
+
+# Start dividing 3 (then 5, 7, 9...)
+push 3
+save d
+
+
+loop:
+    # Stop when d == p
+    load d
+    load p
+    sub
+    jumpzero is_prime
+
+    # Test p % d == 0
+    load p
+    load d
+    mod
+    jumpzero is_composite
+    load d
+    push 2
+    add
+    save d
+    jump loop
+
+
+# composite
+is_composite:
+    push 0
+    builtin print
+    load d
+    builtin print
+    load p
+    load d
+    div
+    builtin print
+    builtin exit
+
+
+# prime
+is_prime:
+    push 1
+    builtin print
+    builtin exit
+
